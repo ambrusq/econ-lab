@@ -1,3 +1,5 @@
+import matplotlib.pyplot as plt
+
 birth_rates = [0.01,0.02,0.03]
 death_rate = 0.015
 
@@ -23,6 +25,18 @@ print(scenario_history[1][100])
 print("Scenario C:")
 print(scenario_history[2][100])
 
-# Task 2 — Plot the trajectories
 
-# Use matplotlib to create a single graph containing the three trajectories.
+ypoints1 = scenario_history[0]
+ypoints2 = scenario_history[1]
+ypoints3 = scenario_history[2]
+
+plt.plot(ypoints1, label="Scenario A")
+plt.plot(ypoints2, label="Scenario B")
+plt.plot(ypoints3, label="Scenario C")
+
+plt.title("Population Change Over Time")
+plt.xlabel("Years")
+plt.ylabel("Population")
+plt.legend()
+
+plt.show()
