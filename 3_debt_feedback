@@ -1,0 +1,25 @@
+import matplotlib.pyplot as plt
+
+debt = 100
+PD = 1
+years = 30
+
+debt_history = [debt]
+
+for year in range(years):
+    feedback_interest = 0.03 + 0.001 * debt
+    debt = debt * (1 + feedback_interest) + PD
+    debt_history.append(debt)
+
+print(debt_history)
+
+# [100, 113.99999999999999, 131.41599999999997, 153.62864505599995, 182.83926498942236, 
+# 222.75463976097726, 280.05690848884933, 367.89048773584653, 515.270613334441, 
+# 797.2325367005252, 1457.7292303754953, 3627.435616377894, 16895.547835836103, 
+# 302862.9509439373, 92037916.89394201, 8471072945231.578, 7.175907685215961e+22, 
+# 5.149365110674149e+42, 2.6515961043028193e+82, 7.030961900353888e+161, inf, inf, 
+# inf, inf, inf, inf, inf, inf, inf, inf, inf]
+
+# Even a small feedback loop can skyrocket the results over enough time. Obviously this kind
+# of mechanism shouldn't be included without upper bounds or other economic mechanisms.
+# A mathematically valid model can be economically absurd.
