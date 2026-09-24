@@ -1,0 +1,22 @@
+Expected Final Wealth
+476339.18
+Median Final Wealth
+435069.8
+Probability of Final Wealth above 500k
+36.82%
+Probability of Final Wealth above 750k
+9.61%
+Probability of Final Wealth below 0
+0.0%
+5th Percentile
+223668
+25th Percentile
+330443
+50th Percentile
+435070
+75th Percentile
+575219
+95th Percentile
+869997
+95% Confidence Interval
+[475311, 477367]

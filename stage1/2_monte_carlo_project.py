@@ -1,5 +1,6 @@
 import numpy as np
 import math
+import matplotlib.pyplot as plt
 
 wealth = 100000
 contribution = 10000
@@ -35,7 +36,7 @@ covariance_matrix = [[equities_std ** 2, covariance], [covariance, bonds_std ** 
 
 x = np.random.multivariate_normal(mean, covariance_matrix, size=(observations,years))
 
-print(x.shape)
+# print(x.shape)
 
 # print(x[:,:,1])
 
@@ -64,13 +65,16 @@ for e in range(observations):
 # Expected wealth at 20 years
 final_wealth = []
 for i in range(observations):
-    observation = wealth_simulations[i][19]
+    observation = wealth_simulations[i][years - 1]
     final_wealth.append(observation)
 
-print(np.mean(final_wealth))
+e_wealth = round(np.mean(final_wealth), 2)
+print("Expected Final Wealth")
+print(e_wealth)
 
 # Median final wealth
-print(np.median(final_wealth))
+print("Median Final Wealth")
+print(round(np.median(final_wealth), 2))
 
 # Probability of W_20 > 500k
 count = 0
@@ -79,7 +83,14 @@ for i in final_wealth:
         count += 1
 
 prob_500k = count / len(final_wealth)
+print("Probability of Final Wealth above 500k")
 print(str(round(prob_500k * 100, 2)) + "%")
+
+# Alternative solution using boolean mask
+x = np.array(final_wealth)
+mask = x > 500000
+result = x[mask]
+# print(len(result)/len(final_wealth))
 
 # Probability of W_20 > 750k
 count = 0
@@ -88,6 +99,7 @@ for i in final_wealth:
         count += 1
 
 prob_750k = count / len(final_wealth)
+print("Probability of Final Wealth above 750k")
 print(str(round(prob_750k * 100, 2)) + "%")
 
 # Probability of losing money
@@ -97,6 +109,40 @@ for i in final_wealth:
         count += 1
 
 prob_neg = count / len(final_wealth)
+print("Probability of Final Wealth below 0")
 print(str(round(prob_neg * 100, 2)) + "%")
 
 # Plots and percentiles
+plt.hist(final_wealth)
+plt.title("Histogram of Final Wealth")
+plt.xlabel("Observations")
+plt.ylabel("Wealth")
+# plt.show()
+
+print("5th Percentile")
+print(round(np.percentile(final_wealth, 5)))
+
+print("25th Percentile")
+print(round(np.percentile(final_wealth, 25)))
+
+print("50th Percentile")
+print(round(np.percentile(final_wealth, 50)))
+
+print("75th Percentile")
+print(round(np.percentile(final_wealth, 75)))
+
+print("95th Percentile")
+print(round(np.percentile(final_wealth, 95)))
+
+# Confidence intervals
+st_error = np.std(wealth_simulations) / math.sqrt(observations)
+
+# print("Standard error")
+# print(st_error)
+
+ci_p = e_wealth + 1.96 * st_error
+ci_n = e_wealth - 1.96 * st_error
+ci = [int(round(ci_n)), int(round(ci_p))]
+
+print("95% Confidence Interval")
+print(ci)
