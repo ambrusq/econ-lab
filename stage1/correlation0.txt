@@ -1,24 +1,24 @@
 Expected Final Wealth
-475623.49
+475863.57
 Sample standard deviation
-165269.66
+163874.69
 Median Final Wealth
-434807.6
+436688.13
 Probability of Final Wealth above 500k
-36.84%
+36.93%
 Probability of Final Wealth above 750k
-9.64%
+9.18%
 Probability of Final Wealth below 0
 0.0%
 5th Percentile
-223580
+228673
 25th Percentile
-329570
+333446
 50th Percentile
-434808
+436688
 75th Percentile
-575387
+573959
 95th Percentile
-868097
+854663
 95% Confidence Interval
-[474599, 476648]
+[474848, 476879]
