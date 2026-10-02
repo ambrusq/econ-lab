@@ -44,3 +44,6 @@ Global/local sensitivity
 Parameter interactions
 Scenario analysis
 Vectorization across simulations
+
+
+To start a new stage, see prompt in Obsidian.
